@@ -1,26 +1,57 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { CaptainDataContext } from '../context/captainContext'
+import axios from 'axios'
+import { useContext } from 'react'
 
 function captainSigninPage() {
-  const [ email, setEmail ] = useState('')
-  const [ password, setPassword ] = useState('')
-  const [ firstName, setFirstName ] = useState('')
-  const [ lastName, setLastName ] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
+
+  const [vehicleColor, setVehicleColor] = useState('')
+  const [vehiclePlate, setVehiclePlate] = useState('')
+  const [vehicleCapacity, setVehicleCapacity] = useState('')
+  const [vehicleType, setVehicleType] = useState('')
+
+  const { captain, setCaptain } = useContext(CaptainDataContext)
+  const navigate = useNavigate();
+
 
   const submitHandler = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     const captainData = {
-      fullname: {
-        firstname: firstName,
-        lastname: lastName
+      fullName: {
+        firstName: firstName,
+        lastName: lastName
       },
       email: email,
       password: password,
+      vehicle: {
+        color: vehicleColor,
+        plate: vehiclePlate,
+        capacity: vehicleCapacity,
+        vehicleType: vehicleType
+      }
     }
+    const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/captain/register`, captainData);
+
+    if (response.status == 201) {
+      const data = response.data;
+      setCaptain(data.captain);
+      localStorage.setItem('token', data.token);
+      navigate('/home');
+    }
+
     setEmail('')
     setFirstName('')
     setLastName('')
     setPassword('')
+    setVehicleColor('')
+    setVehiclePlate('')
+    setVehicleCapacity('')
+    setVehicleType('')
   }
   return (
     <div className='py-5 px-5 h-screen flex flex-col justify-between'>
@@ -78,6 +109,40 @@ function captainSigninPage() {
             required type="password"
             placeholder='password'
           />
+          <h3 className='text-lg font-medium mb-2'>vehicle</h3>
+
+          <input className='bg-[#eeeeee] w-2/5 mr-4 rounded-lg px-4 py-2 border text-lg placeholder:text-base' placeholder='color' value={vehicleColor}
+          onChange={(e) => {
+            setVehicleColor(e.target.value)
+          }}></input>
+
+          <input className='bg-[#eeeeee] w-2/5 mb-7 rounded-lg px-4 py-2 border p-2 text-lg placeholder:text-base' placeholder='plate'
+          value={vehiclePlate}
+          onChange={(e) => {
+            setVehiclePlate(e.target.value)
+          }}
+          ></input>
+
+          <input className='bg-[#eeeeee] w-2/5 mr-4 rounded-lg px-4 py-2 border text-lg placeholder:text-base' placeholder='capacity'
+          value={vehicleCapacity}
+          onChange={(e) => {
+            setVehicleCapacity(e.target.value)
+          }}
+          ></input>
+
+          <select
+              required
+              className='bg-[#eeeeee] w-2/5 mr-4 rounded-lg px-4 py-2 border text-lg placeholder:text-base mb-5'
+              value={vehicleType}
+              onChange={(e) => {
+                setVehicleType(e.target.value)
+              }}
+            >
+              <option value="" disabled>Select Vehicle Type</option>
+              <option value="car">Car</option>
+              <option value="auto">Auto</option>
+              <option value="moto">Moto</option>
+            </select>
 
           <button
             className='bg-[#111] text-white font-semibold mb-3 rounded-lg px-4 py-2 w-full text-lg placeholder:text-base'
