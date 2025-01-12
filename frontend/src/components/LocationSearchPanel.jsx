@@ -1,6 +1,8 @@
 import React from 'react'
 const LocationSearchPanel = (props) => {
     // sample array for location 
+    
+    
     const locations = [
         "24B, Near Kapoor's cafe, Sheryians Coding School, Bhopal",
         "22C, Near Malholtra's cafe, Sheryians Coding School, Bhopal",
