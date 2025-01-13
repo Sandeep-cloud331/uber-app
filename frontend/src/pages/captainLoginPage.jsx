@@ -22,7 +22,7 @@ function captainLoginPage() {
       const data = response.data
       localStorage.setItem('token', data.token)
       setCaptain(data.captain)
-      navigate('/home')
+      navigate('/captain-Home')
     }
 
     setEmail('')
