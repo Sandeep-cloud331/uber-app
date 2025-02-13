@@ -87,7 +87,7 @@ const Home = () => {
     useGSAP(function () {
         if (waitingForDriver) {
             gsap.to(waitingForDriverRef.current, {
-                transform: 'translateY(0)'
+                transform: 'translateY(100)'
             })
         } else {
             gsap.to(waitingForDriverRef.current, {
@@ -106,15 +106,15 @@ const Home = () => {
                     src="https://upload.wikimedia.org/wikipedia/commons/c/cc/Uber_logo_2018.png"
                     alt="Uber Logo"
                 />
-                <div className='h-screen w-screen'>
+                <div className='bg-slate-800 h-screen w-screen'>
                     <img
                         className='h-full w-full object-cover'
-                        src="https://miro.medium.com/v2/resize:fit:1400/0*gwMx05pqII5hbfmX.gif"
+                        // src="https://miro.medium.com/v2/resize:fit:1400/0*gwMx05pqII5hbfmX.gif"
                         alt="Background"
                     />
                 </div>
                 <div className='flex flex-col justify-end h-screen absolute top-0 w-full'>
-                    <div className=' h-[30%] p-6 bg-white relative'>
+                    <div className=' h-[30%] p-6 bg-slate-400 relative'>
                         <h4 className=' text-2xl font-semibold'>Find a trip</h4>
                         <h3 className='absolute right-5 top-8'><i ref={panelCloseRef} onClick={(e) => {
                             setPanelOpen(false)
@@ -163,7 +163,7 @@ const Home = () => {
                 <div ref={vehicleFoundRef} className='fixed w-full z-10 bottom-0 translate-y-full bg-white px-3 py-6 pt-12'>
                     <LookingForDriver setVehicleFound={setVehicleFound} />
                 </div>
-                <div ref={waitingForDriverRef} className='fixed w-full  z-10 bottom-0  bg-white px-3 py-6 pt-12'>
+                <div ref={waitingForDriverRef} className='fixed w-full  z-10 bottom-0 translate-y-full bg-white px-3 py-6 pt-12'>
                     <WaitingForDriver waitingForDriver={waitingForDriver} />
                 </div>
 
