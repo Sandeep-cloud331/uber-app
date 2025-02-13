@@ -24,6 +24,7 @@ module.exports.authUser = async (req, res, next) => {
 
     req.user = user;
 
+
     return next();
 
   } catch (error) {
