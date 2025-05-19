@@ -9,12 +9,13 @@ import Home from './pages/home'
 import UserProtectedWrapper from './pages/userProtectedWrapper'
 import UserLogout from './pages/userLogout'
 import CaptainProtectWrapper from './pages/CaptainProtectWrapper'
+import CaptainLogout from './pages/CaptainLogout'
 import CaptainHome from './pages/captainHome'
 import Riding from './pages/Riding'
 import CaptainRiding from './pages/CaptainRiding'
 import 'remixicon/fonts/remixicon.css'
 
-function hello() {
+function app() {
   return (
     <>
       <Routes>
@@ -45,9 +46,14 @@ function hello() {
         <Route path='/user/logout' element={<UserProtectedWrapper>
           <UserLogout />
         </UserProtectedWrapper>} />
+
+        <Route path='/captain/logout' element={
+          <CaptainProtectWrapper>
+            <CaptainLogout />
+          </CaptainProtectWrapper>
+        } /> 
       </Routes>
     </>
   )
 }
-
-export default hello
+export default app

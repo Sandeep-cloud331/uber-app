@@ -3,36 +3,44 @@ import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { UserDataContext } from '../context/userContext'
 
-function signupPage() {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [firstName, setFirstName] = useState('')
-  const [lastName, setLastName] = useState('')
 
-  const navigate = useNavigate();
+
+const UserSignup = () => {
+  const [ email, setEmail ] = useState('')
+  const [ password, setPassword ] = useState('')
+  const [ firstName, setFirstName ] = useState('')
+  const [ lastName, setLastName ] = useState('')
+  const [ userData, setUserData ] = useState({})
+
+  const navigate = useNavigate()
+
+
+
   const { user, setUser } = useContext(UserDataContext)
+
+
+
 
   const submitHandler = async (e) => {
     e.preventDefault()
     const newUser = {
-      fullName: {
-        firstName: firstName,
-        lastName: lastName
+      fullname: {
+        firstname: firstName,
+        lastname: lastName
       },
       email: email,
       password: password
     }
 
+    const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/users/register`, newUser)
 
-    const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/user/register`, newUser)
-
-    if (response.status == 201) {
-      const data = response.data;
-
+    if (response.status === 201) {
+      const data = response.data
       setUser(data.user)
-      localStorage.setItem('token',data.token)
+      localStorage.setItem('token', data.token)
       navigate('/home')
     }
+
 
     setEmail('')
     setFirstName('')
@@ -40,7 +48,6 @@ function signupPage() {
     setPassword('')
 
   }
-
   return (
     <div>
       <div className='p-7 h-screen flex flex-col justify-between'>
@@ -115,4 +122,4 @@ function signupPage() {
   )
 }
 
-export default signupPage
+export default UserSignup

@@ -1,42 +1,41 @@
-import React, { useState,useContext } from 'react'
-
-import { Link ,useNavigate} from 'react-router-dom'
+import React, { useState, useContext } from 'react'
+import { Link } from 'react-router-dom'
 import { UserDataContext } from '../context/userContext'
+import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
-function loginPage() {
+const UserLogin = () => {
   const [ email, setEmail ] = useState('')
   const [ password, setPassword ] = useState('')
   const [ userData, setUserData ] = useState({})
 
-
-
-  const navigate = useNavigate();
   const { user, setUser } = useContext(UserDataContext)
+  const navigate = useNavigate()
+
+
 
   const submitHandler = async (e) => {
     e.preventDefault();
 
-    const newUser = {
+    const userData = {
       email: email,
       password: password
     }
 
-    const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/user/login`,newUser)
+    const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/users/login`, userData)
 
-    if(response.status === 200){
-      const data = response.data;
-
+    if (response.status === 200) {
+      const data = response.data
       setUser(data.user)
-      localStorage.setItem('token',data.token)
-
+      localStorage.setItem('token', data.token)
       navigate('/home')
     }
 
+
     setEmail('')
     setPassword('')
-    
   }
+
   return (
     <div className='p-7 h-screen flex flex-col justify-between'>
       <div>
@@ -86,4 +85,4 @@ function loginPage() {
   )
 }
 
-export default loginPage
+export default UserLogin

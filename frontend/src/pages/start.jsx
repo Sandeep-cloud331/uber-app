@@ -1,20 +1,19 @@
-import React from 'react'
-import {Link} from 'react-router-dom'
 
-function start() {
+import React from 'react'
+import { Link } from 'react-router-dom'
+
+const Start = () => {
   return (
-    <div >
-      <div className=' bg-cover bg-centre h-screen pt-8 flex justify-between flex-col w-full bg-[url(https://elements-resized.envatousercontent.com/envato-shoebox/e1db/4020-79e7-49fa-9707-d8409663fa0b/C3XCnU6kZugue2SBzf3XAsCuxkH1Hi3L1BSoSVE5.jpg?w=800&cf_fit=scale-down&mark-alpha=18&mark=https%3A%2F%2Felements-assets.envato.com%2Fstatic%2Fwatermark4.png&q=85&format=auto&s=26d76627c0e46fb98241dbe7daa23b3bd9e78e48d0eb35f0ce118e5b8d8e7d54)]'>
-        <img className='w-16 ml-8' src="https://th.bing.com/th/id/R.ee430489d1505483166c19ab9ed00d4e?rik=TR8JYzS1MJsqxg&riu=http%3a%2f%2fwww.pngall.com%2fwp-content%2fuploads%2f4%2fUber-Logo-PNG-Free-Image.png&ehk=RkArudRupF3ki6m0KJJ67MImDo65xcs3upha4JAEOME%3d&risl=&pid=ImgRaw&r=0">
-        </img >
+    <div>
+      <div className='bg-cover bg-center bg-[url(https://images.unsplash.com/photo-1619059558110-c45be64b73ae?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)] h-screen pt-8 flex justify-between flex-col w-full'>
+        <img className='w-16 ml-8' src="https://cdn-assets-eu.frontify.com/s3/frontify-enterprise-files-eu/eyJwYXRoIjoid2VhcmVcL2ZpbGVcLzhGbTh4cU5SZGZUVjUxYVh3bnEyLnN2ZyJ9:weare:F1cOF9Bps96cMy7r9Y2d7affBYsDeiDoIHfqZrbcxAw?width=1200&height=417" alt="" />
         <div className='bg-white pb-8 py-4 px-4'>
           <h2 className='text-[30px] font-semibold'>Get Started with Uber</h2>
-          <Link to='/login' className='flex items-center justify-center w-full bg-black text-white py-3 rounded-lg mt-5'  > continue</Link>
+          <Link to='/login' className='flex items-center justify-center w-full bg-black text-white py-3 rounded-lg mt-5'>Continue</Link>
         </div>
       </div>
-
     </div>
   )
 }
 
-export default start
+export default Start

@@ -20,7 +20,7 @@ const CaptainProtectWrapper = ({
             navigate('/captain-login')
         }
 
-        axios.get(`${import.meta.env.VITE_BASE_URL}/captain/profile`, {
+        axios.get(`${import.meta.env.VITE_BASE_URL}/captains/profile`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -31,7 +31,7 @@ const CaptainProtectWrapper = ({
             }
         })
             .catch(err => {
-                console.log(children)
+
                 localStorage.removeItem('token')
                 navigate('/captain-login')
             })
