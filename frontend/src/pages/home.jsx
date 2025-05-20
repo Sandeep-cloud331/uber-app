@@ -50,6 +50,8 @@ const Home = () => {
         setVehicleFound(false)
         setWaitingForDriver(true)
         setRide(ride)
+        console.log(ride);
+        
     })
 
     socket.on('ride-started', ride => {
@@ -184,6 +186,8 @@ const Home = () => {
     }
 
     async function createRide() {
+        console.log(vehicleType);
+        
         const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/rides/create`, {
             pickup,
             destination,

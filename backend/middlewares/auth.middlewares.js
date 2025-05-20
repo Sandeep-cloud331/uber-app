@@ -22,7 +22,7 @@ module.exports.authUser = async (req, res, next) => {
     const user = await userModel.findById(decode._id)
 
     req.user = user;
-    console.log("done from auth");
+    // console.log("done from auth");
     
     return next();
 

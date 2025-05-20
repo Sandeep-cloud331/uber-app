@@ -9,7 +9,7 @@ const VehiclePanel = (props) => {
             <h3 className='text-2xl font-semibold mb-5'>Choose a Vehicle</h3>
             <div onClick={() => {
                 props.setConfirmRidePanel(true)
-                props.setVehicle('car')
+                props.selectVehicle('car')
 
             }} className='flex border-2 active:border-black  mb-2 rounded-xl w-full p-3  items-center justify-between'>
                 <img className='h-10' src="https://swyft.pl/wp-content/uploads/2023/05/how-many-people-can-a-uberx-take.jpg" alt="" />

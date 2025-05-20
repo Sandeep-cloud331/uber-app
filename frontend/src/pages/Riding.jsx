@@ -29,7 +29,7 @@ const Riding = () => {
                 <div className='flex items-center justify-between'>
                     <img className='h-12' src="https://swyft.pl/wp-content/uploads/2023/05/how-many-people-can-a-uberx-take.jpg" alt="" />
                     <div className='text-right'>
-                        <h2 className='text-lg font-medium capitalize'>{ride?.captain.fullname.firstname}</h2>
+                        <h2 className='text-lg font-medium capitalize'>{ride?.captain.fullName.firstName}</h2>
                         <h4 className='text-xl font-semibold -mt-1 -mb-1'>{ride?.captain.vehicle.plate}</h4>
                         <p className='text-sm text-gray-600'>Maruti Suzuki Alto</p>
 
@@ -55,7 +55,7 @@ const Riding = () => {
                         </div>
                     </div>
                 </div>
-                <button className='w-full mt-5 bg-green-600 text-white font-semibold p-2 rounded-lg'>Make a Payment</button>
+                <button className='w-full mt-5 bg-green-600 text-white font-semibold p-2 rounded-lg '>Make a Payment</button>
             </div>
         </div>
     )
