@@ -15,7 +15,6 @@ module.exports.createUser = async({firstName,lastName,email,password}) =>{
     password
 
   })
-  console.log(user);
   
   return user;
   

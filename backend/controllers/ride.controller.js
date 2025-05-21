@@ -18,7 +18,6 @@ module.exports.createRide = async (req, res) => {
         const ride = await rideService.createRide({ user: req.user._id, pickup, destination, vehicleType });
         res.status(201).json(ride);
         const pickupCoordinates = await mapService.getAddressCoordinate(pickup);
-        // console.log(pickupCoordinates);
 
 
 
@@ -29,7 +28,6 @@ module.exports.createRide = async (req, res) => {
         ride.otp = ""
 
         const rideWithUser = await rideModel.findOne({ _id: ride._id }).populate('user');
-        console.log(rideWithUser);
 
 
         allCaptains.map(captain => {
@@ -41,8 +39,6 @@ module.exports.createRide = async (req, res) => {
         })
 
     } catch (err) {
-
-        // console.log(err);
         return res.status(500).json({ message: err.message });
     }
 
@@ -79,13 +75,12 @@ module.exports.confirmRide = async (req, res) => {
 
     try {
         const ride = await rideService.confirmRide({ rideId, captain: req.captain });
-        // console.log(ride,"hello");
+        
 
         sendMessageToSocketId(ride.user.socketId, {
             event: 'ride-confirmed',
             data: ride
         })
-        console.log(ride);
 
 
         return res.status(200).json(ride);
@@ -107,7 +102,6 @@ module.exports.startRide = async (req, res) => {
     try {
         const ride = await rideService.startRide({ rideId, otp, captain: req.captain });
 
-        // console.log(ride);
 
         sendMessageToSocketId(ride.user.socketId, {
             event: 'ride-started',

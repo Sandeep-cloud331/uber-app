@@ -17,17 +17,17 @@ router.post('/register', [
   captainController.registerCaptain
 )
 
-router.post('/login',[
+router.post('/login', [
   body('email').isEmail().withMessage('invalid email'),
-  body('password').isLength({min:6}).withMessage('Password must be at least 6 characters')
+  body('password').isLength({ min: 6 }).withMessage('Password must be at least 6 characters')
 
 ],
- captainController.loginCaptain
+  captainController.loginCaptain
 )
 
-router.get('/profile', authMiddleware.authCaptain,captainController.getCaptainProfile)
+router.get('/profile', authMiddleware.authCaptain, captainController.getCaptainProfile)
 
-router.get('/logout',authMiddleware.authCaptain,captainController.logoutCaptain)
+router.get('/logout', authMiddleware.authCaptain, captainController.logoutCaptain)
 
 
 module.exports = router;

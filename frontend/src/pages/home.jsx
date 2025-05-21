@@ -50,12 +50,10 @@ const Home = () => {
         setVehicleFound(false)
         setWaitingForDriver(true)
         setRide(ride)
-        console.log(ride);
         
     })
 
     socket.on('ride-started', ride => {
-        console.log("ride")
         setWaitingForDriver(false)
         navigate('/riding', { state: { ride } }) // Updated navigate to include ride data
     })
@@ -186,7 +184,6 @@ const Home = () => {
     }
 
     async function createRide() {
-        console.log(vehicleType);
         
         const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/rides/create`, {
             pickup,
