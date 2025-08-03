@@ -50,7 +50,7 @@ const Home = () => {
         setVehicleFound(false)
         setWaitingForDriver(true)
         setRide(ride)
-        
+
     })
 
     socket.on('ride-started', ride => {
@@ -71,7 +71,7 @@ const Home = () => {
             })
             setPickupSuggestions(response.data)
         } catch {
-            // handle error
+            console.error("Suggestion fetch failed:", err);
         }
     }
 
@@ -86,7 +86,7 @@ const Home = () => {
             })
             setDestinationSuggestions(response.data)
         } catch {
-            // handle error
+            console.error("Destination fetch failed:", err);
         }
     }
 
@@ -184,7 +184,7 @@ const Home = () => {
     }
 
     async function createRide() {
-        
+
         const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/rides/create`, {
             pickup,
             destination,
