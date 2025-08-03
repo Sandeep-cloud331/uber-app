@@ -12,7 +12,14 @@ const rideRoutes = require('./routes/ride.routes');
 
 connectToDb();
 
-app.use(cors());
+const allowedOrigins = [
+  "https://uber-app-gold.vercel.app",
+  "http://localhost:5173"
+];
+app.use(cors({
+  origin: allowedOrigins,
+  credentials: true
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 app.use(cookies());
@@ -22,9 +29,9 @@ app.get("/", (req, res) => {
 });
 
 app.use('/users', userRoutes);
-app.use('/captain',captainRoutes)
-app.use('/maps',mapsRoutes)
-app.use('/rides',rideRoutes);
+app.use('/captain', captainRoutes)
+app.use('/maps', mapsRoutes)
+app.use('/rides', rideRoutes);
 
 
 module.exports = app;
