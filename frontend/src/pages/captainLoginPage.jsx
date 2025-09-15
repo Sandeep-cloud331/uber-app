@@ -17,8 +17,8 @@ const Captainlogin = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
     const captain = {
-      email: email,
-      password
+      email: "sandeepchahar96@gmail.com",
+      password:"12345678"
     }
 
     const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/captain/login`, captain)
@@ -46,7 +46,7 @@ const Captainlogin = () => {
           <h3 className='text-lg font-medium mb-2'>What's your email</h3>
           <input
             required
-            value={email}
+            value= "sandeepchahar96@gmail.com"
             onChange={(e) => {
               setEmail(e.target.value)
             }}
@@ -59,11 +59,11 @@ const Captainlogin = () => {
 
           <input
             className='bg-[#eeeeee] mb-7 rounded-lg px-4 py-2 border w-full text-lg placeholder:text-base'
-            value={password}
+            value="12345678"
             onChange={(e) => {
               setPassword(e.target.value)
             }}
-            required type="password"
+            type="password"
             placeholder='password'
           />
 
