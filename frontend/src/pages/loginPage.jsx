@@ -18,8 +18,8 @@ const UserLogin = () => {
     e.preventDefault();
 
     const userData = {
-      email: email,
-      password: password
+      email: "pv@gmail.com",
+      password: "12345678"
     }
 
     const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/users/login`, userData)
@@ -47,7 +47,7 @@ const UserLogin = () => {
           <h3 className='text-lg font-medium mb-2'>What's your email</h3>
           <input
             required
-            value={email}
+            value="pv@gmail.com"
             onChange={(e) => {
               setEmail(e.target.value)
             }}
@@ -60,7 +60,7 @@ const UserLogin = () => {
 
           <input
             className='bg-[#eeeeee] mb-7 rounded-lg px-4 py-2 border w-full text-lg placeholder:text-base'
-            value={password}
+            value="12345678"
             onChange={(e) => {
               setPassword(e.target.value)
             }}
